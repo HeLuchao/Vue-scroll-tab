@@ -75,8 +75,10 @@ export default {
             if (id != this.activeNav) {
                 this.activeNav = id;
             }
-            //80 为顶部导航高度
-            let headerHeight = document.querySelector(`#header`).offsetTop - 80;
+            //导航高度计算
+            let tabBarOffsetTop = document.querySelector("#tabBarArea").offsetTop;
+            let headerHeight = document.querySelector(`#header`).offsetTop - tabBarOffsetTop;
+            //页面锚点高度
             if (id == 1) {
                 document.documentElement.scrollTop =
                     document.querySelector(`#sale`).offsetTop + headerHeight;
@@ -98,6 +100,7 @@ export default {
                 document.documentElement.scrollTop ||
                 document.body.scrollTop;
             let tabBarOffsetTop = document.querySelector("#tabBarArea").offsetTop;
+
             this.isShowTopNavBar = scrollTop >= tabBarOffsetTop;
             for (let i = 0; i < this.activeDom.length; i++) {
                 if (
@@ -148,8 +151,8 @@ body {
         // 导航
         .tabBar-area {
             width: 100%;
-            height: 70px;
-            line-height: 70px;
+            height: 80px;
+            line-height: 80px;
             background: #f7f8fa;
             display: flex;
             align-items: center;
@@ -193,7 +196,7 @@ body {
                 background: paleturquoise;
             }
             #after {
-                height: 300px;
+                height: 900px;
                 background: yellow;
             }
         }
